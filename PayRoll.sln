@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayRoll", "PayRoll\PayRoll.csproj", "{024F554E-6224-4C61-A8A8-573C65654587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{024F554E-6224-4C61-A8A8-573C65654587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024F554E-6224-4C61-A8A8-573C65654587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024F554E-6224-4C61-A8A8-573C65654587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024F554E-6224-4C61-A8A8-573C65654587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AB7DAD1-F7C5-41CE-B900-4431310FBFFF}
+	EndGlobalSection
+EndGlobal

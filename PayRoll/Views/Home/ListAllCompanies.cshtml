@@ -1,0 +1,88 @@
+﻿@*@model IEnumerable<PayRoll.Models.Company>*@
+
+@{
+    ViewBag.Title = "ListAllCompanies";
+}
+
+<h2>List All Companies</h2>
+
+<table class="table" id="tblCompany">
+    <thead>
+        <tr>
+            <td>
+                <input type="text" id="searchCompany" placeholder="Search for A Company" />
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label>Company Name</label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.ActionLink("Back to List", "Index")
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
+@Scripts.Render("~/bundles/datatables")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#tblCompany").dataTable({
+            responsive: true,
+            order: [[1, 'desc']],
+            "serverSide": true,
+            "orderMulti": false,
+            "ajax": {
+                "url": '@Url.Action("LoadCompanies", "Home")',
+                "type": "POST",
+                "datatype": "json"
+            },
+
+            "dom": '<"top"ilp>rt<"bottom"lp><"clear">',
+            initComplete: function () {
+                var api = this.api();
+                api.columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change input', function () {
+                        oTable.columns(0).search($('#searchCompany').val());
+                        oTable.draw();
+                    });
+                });
+            },
+            "processing": true,
+            "lengthChange": true,
+            columnDefs: [
+                {
+                    "data": "ID", "targets": 1, "visible": false, "render": function (data, type, row, meta) {
+                        return '<a target=_blank href="@Url.Action("CompanyDetails", "Home", "id")">'+row["Name"]+'</a>'
+                    }
+                },
+                {
+                    "data": "ID", "targets": 0, "render": function (data, type, row, meta) {
+                        return '<a target=_blank href="@Url.Action("CompanyDetails", "Home")/' + row["ID"]+'">' + row["Name"] + '</a>'
+                    }
+                }
+            ],
+            "columns": [
+                { "data": "ID", "name": "ID" },                                 //index 0
+                { "data": "Name", "name": "Name" }                              //index 1
+            ]
+        });
+        oTable = $('#tblCompany').DataTable();
+    });
+</script>

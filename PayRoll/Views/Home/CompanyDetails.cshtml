@@ -1,0 +1,71 @@
+﻿@model PayRoll.Models.Company
+
+@{
+    ViewBag.Title = "CompanyDetails";
+}
+
+<h2>Company Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name) :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+
+    @if (Model.BusinessAddress != null)
+    {
+        <h4>@Html.DisplayNameFor(model => model.BusinessAddress)</h4>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessAddress.Country) :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BusinessAddress.Country)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessAddress.City) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BusinessAddress.City)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BusinessAddress.Street) :
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BusinessAddress.Street)
+            </dd>
+        </dl>
+    }
+    else
+    {
+
+    }
+
+
+
+    <h4>Employees</h4>
+    <dl class="dl-horizontal">
+        @foreach (var emp in Model.Employees)
+        {
+            <dt>
+                @emp.Name @emp.Lastname :
+            </dt>
+            <dd>
+                @emp.Position
+            </dd>
+        }
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "ListAllCompanies")
+</p>
